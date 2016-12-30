@@ -25,17 +25,11 @@ using namespace Interpolation;
 //                  0  a2 b2
 // Output:      X -> it is the X vector of the equation MX = Y
 void Interpolation::tdma(vector<double> &M, vector<double> a, vector<double> b, vector<double> c) {
-    for (size_t i=0; i<a.size(); i++) {
-        cout << a[i] << " ";
-    }
-    cout << endl;
-    for (size_t i=0; i<b.size(); i++) {
-        cout << b[i] << " ";
-    }
-    cout << endl;
-    for (size_t i=0; i<c.size(); i++) {
-        cout << c[i] << " ";
-    }
+    cout << b[0] << " " << c[0] << "  0 " << "  0" << endl;
+    cout << a[1] << "    " << b[1] << "  " << c[1] << "   0" << endl;
+    cout << "0"  << "    " << a[2] << "  " << b[2] << "   " << c[2] << endl;
+    cout << "0"  << "    " << "0  " << a[3] << " " << b[3] << endl;
+    
     cout << endl;
     for (size_t i=0; i<M.size(); i++) {
         cout << M[i] << " ";
@@ -120,6 +114,7 @@ void Interpolation::spline(vector<double> x, vector<double> y, vector<double> xi
     
     // call tdma to solve M where XM = Y => M = Y because of tdma function
     tdma(Y, a, b, c);
+    cout << "M = " << endl;
     for (size_t i = 0; i < b.size(); i++) {
         cout << Y[i] << " ";
     }
