@@ -9,6 +9,10 @@ This is a function to show how interpolation works and how to convert a MATLAB i
  The algorithm specified on Wikipedia is the code for a natural spline.
 
 
-http://blog.csdn.net/skykingf/article/details/45536231
+## References
 
-http://blog.csdn.net/kaitiren/article/details/38513715
+1. http://www.cs.tau.ac.il/~turkel/notes/numeng/spline_note.pdf
+
+2. http://blog.csdn.net/skykingf/article/details/45536231
+
+3. http://blog.csdn.net/kaitiren/article/details/38513715
