@@ -40,6 +40,8 @@ int main(int argc, const char * argv[]) {
 
     // call spline2 to do interpolation for 2D
     spline2(x,y,z,xi,yi,zi);
+    
+    
     for (size_t i = 0; i < zi.size(); i++) {
         cout << zi[10][i] << " ";
     }

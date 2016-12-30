@@ -25,6 +25,23 @@ using namespace Interpolation;
 //                  0  a2 b2
 // Output:      X -> it is the X vector of the equation MX = Y
 void Interpolation::tdma(vector<double> &M, vector<double> a, vector<double> b, vector<double> c) {
+    for (size_t i=0; i<a.size(); i++) {
+        cout << a[i] << " ";
+    }
+    cout << endl;
+    for (size_t i=0; i<b.size(); i++) {
+        cout << b[i] << " ";
+    }
+    cout << endl;
+    for (size_t i=0; i<c.size(); i++) {
+        cout << c[i] << " ";
+    }
+    cout << endl;
+    for (size_t i=0; i<M.size(); i++) {
+        cout << M[i] << " ";
+    }
+    cout << endl;
+    
     size_t size = M.size();
     
     // eliminate the first line
@@ -32,7 +49,7 @@ void Interpolation::tdma(vector<double> &M, vector<double> a, vector<double> b, 
     M[0] = M[0] / b[0];
     
     // eliminate the rest part
-    for (int n = 1; n < size; n++) {
+    for (size_t n = 1; n < size; n++) {
         double factor = (b[n] - a[n]*c[n-1]);
         c[n] = c[n] / factor;
         M[n] = (M[n] - a[n] * M[n - 1]) / factor;
@@ -52,6 +69,17 @@ void Interpolation::tdma(vector<double> &M, vector<double> a, vector<double> b, 
 //              xi -> xi(:,1) where xi = start:new_res:end in MATLAB.
 //              zi -> it is the return value of interp2(x,z,xi) in MATLAB
 void Interpolation::spline(vector<double> x, vector<double> y, vector<double> xi, vector<double> &yi) {
+    for (size_t i=0; i<x.size(); i++) {
+        cout << x[i] << " ";
+    }
+    cout << endl;
+    
+    for (size_t i=0; i<x.size(); i++) {
+        cout << y[i] << " ";
+    }
+    cout << endl;
+    
+    
     // get the size of the interpolation
     size_t size, last;
     size = x.size();
@@ -109,8 +137,6 @@ void Interpolation::spline(vector<double> x, vector<double> y, vector<double> xi
         if (xi[i] >= x[k+1] && k+1 < last) {
             k++;
         }
-        //cout << xi[i] << " -> " << x[k] << endl;
-        
         // calculate Sk(x)
         sk0 = y[k];
         sk1 = d[k] - h[k] / 6 * (2 * Y[k] + Y[k + 1]);
@@ -137,9 +163,9 @@ void Interpolation::spline2(vector<double> x, vector<double> y, vector<vector<do
     
     
     // interpolate each column
-    for (size_t i=7; i<zi.size(); i++) {
+    //for (size_t i=7; i<zi.size(); i++) {
         // get yi from each column of zi
-        spline(y,z[3],yi,zi[i]);
-    }
+    //    spline(y,z[3],yi,zi[i]);
+    //}
     
 }
