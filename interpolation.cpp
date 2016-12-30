@@ -42,6 +42,7 @@ void Interpolation::tdma(vector<double> &M, vector<double> a, vector<double> b, 
     c[0] = c[0] / b[0];
     M[0] = M[0] / b[0];
     
+    
     // eliminate the rest part
     for (size_t n = 1; n < size; n++) {
         double factor = (b[n] - a[n]*c[n-1]);
@@ -49,9 +50,18 @@ void Interpolation::tdma(vector<double> &M, vector<double> a, vector<double> b, 
         M[n] = (M[n] - a[n] * M[n - 1]) / factor;
     }
     
+    
+    cout << endl;
+    cout << b[0] << " " << c[0] << "  0 " << "  0" << endl;
+    cout << a[1] << "    " << b[1] << "  " << c[1] << "   0" << endl;
+    cout << "0"  << "    " << a[2] << "  " << b[2] << "   " << c[2] << endl;
+    cout << "0"  << "    " << "0  " << a[3] << " " << b[3] << endl;
+    cout << M[0] << " " << M[1] << " " << M[2] << " " << M[3] << endl;
+    
     // substitute from the second last line because X[size-1] is already the solution
-    for (size_t n = size-2; n > -1; n--) {
-        M[n] = M[n] - c[n] * M[n + 1];
+    for (size_t n = 0; n < size-1; n++) {
+        M[size-2-n] = M[size-2-n] - c[size-2-n] * M[size-1-n];
+        cout << M[size-2-n] << endl;
     }
 }
 
