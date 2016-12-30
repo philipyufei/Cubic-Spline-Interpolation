@@ -7,6 +7,8 @@
 //
 
 #include "interpolation.hpp"
+#include <math.h>
+
 using namespace Interpolation;
 
 
@@ -31,9 +33,9 @@ void Interpolation::tdma(vector<double> &M, vector<double> a, vector<double> b, 
     
     // eliminate the rest part
     for (int n = 1; n < size; n++) {
-        double factor = (b[n] - a[n-1]*c[n-1]);
+        double factor = (b[n] - a[n]*c[n-1]);
         c[n] = c[n] / factor;
-        M[n] = (M[n] - a[n-1] * M[n - 1]) / factor;
+        M[n] = (M[n] - a[n] * M[n - 1]) / factor;
     }
     
     // substitute from the second last line because X[size-1] is already the solution
@@ -50,39 +52,76 @@ void Interpolation::tdma(vector<double> &M, vector<double> a, vector<double> b, 
 //              xi -> xi(:,1) where xi = start:new_res:end in MATLAB.
 //              zi -> it is the return value of interp2(x,z,xi) in MATLAB
 void Interpolation::spline(vector<double> x, vector<double> y, vector<double> xi, vector<double> &yi) {
-    for (size_t i=0; i<x.size(); i++) {
-        cout << x[i] << " ";
+    // get the size of the interpolation
+    size_t size, last;
+    size = x.size();
+    last = size - 1;
+    
+    // calculate hi and di
+    vector<double> h(last, 0);
+    vector<double> d(last, 0);
+    for (size_t i = 0; i < last; i++) {
+        h[i] = x[i + 1] - x[i];
+        d[i] = (y[i + 1] - y[i]) / h[i];
+    }
+    
+    // get matrix X -=> a, b, c only, and Y where XM = Y
+    //     b0 c0 xx  0  0
+    //     a1 b1 c1  0  0
+    // X = 0  a2 b2 c2  0, where xx is some value, we need to eliminate them
+    //     0  0  a3 b3 c3
+    //     0  0  xx a4 b4
+    vector<double> a(size, 0);
+    vector<double> b(size, 0);
+    vector<double> c(size, 0);
+    vector<double> Y(size, 0);
+    for (size_t i = 1; i < last; i++) {
+        a[i] = h[i-1];
+        b[i] = 2 * (h[i-1]+h[i]);
+        c[i] = h[i];
+        Y[i] = 6 * (d[i] - d[i-1]);
+    }
+    
+    // convert X to a tridiagonal matrix and the coresponding vector Y
+    b[0] = -h[1] - a[1] * (-h[0]) / c[1];
+    c[0] = (h[0] + h[1]) - b[1] * (-h[0]) / c[1];
+    Y[0] = Y[0] - Y[1] * (-h[0]) / c[1];
+    a[last] = (h[last - 2] + h[last - 1]) - b[last-1] * (-h[last-1]) / a[last-1];
+    b[last] = (-h[last - 2]) - c[last - 1] * (-h[last - 1]) / a[last - 1];
+    Y[last] = Y[last] - Y[last - 1] * (-h[last - 1]) / a[last - 1];
+    
+    // call tdma to solve M where XM = Y => M = Y because of tdma function
+    tdma(Y, a, b, c);
+    for (size_t i = 0; i < b.size(); i++) {
+        cout << Y[i] << " ";
     }
     cout << endl;
+    //cout << endl;
     
-    for (size_t i=0; i<y.size(); i++) {
-        cout << y[i] << " ";
+    // calculate Sk(x), where k = 0, 1, ..., n-1.
+    // Sk(x) = sk0 + sk1*(x - xk) + sk2*(x-xk)^2 + sk3*(x -xk)^3;
+    double sk0;
+    double sk1;
+    double sk2;
+    double sk3;
+    size_t k = 0;
+    for (size_t i = 0; i < xi.size(); i++) {
+        if (xi[i] >= x[k+1] && k+1 < last) {
+            k++;
+        }
+        //cout << xi[i] << " -> " << x[k] << endl;
+        
+        // calculate Sk(x)
+        sk0 = y[k];
+        sk1 = d[k] - h[k] / 6 * (2 * Y[k] + Y[k + 1]);
+        sk2 = Y[k] / 2;
+        sk3 = (Y[k + 1] - Y[k]) / 6 / h[k];
+        yi[i] = sk0 + sk1*(xi[i] - x[k]) + sk2*pow((xi[i] - x[k]), 2) + sk3*pow((xi[i] - x[k]), 3);
     }
-    cout << endl;
-    
-    for (size_t i=0; i<xi.size(); i++) {
-        cout << xi[i] << " ";
-    }
-    cout << endl;
-    
-    // calculate hi
-    
-    // calculate a, b, c
-    
-    // calculate d
-    
-    // call tdma(d, a, b, c)
-    tdma(x,x,y,xi);
-    
-    // get sk1, sk2, sk3, sk4 to get S(x) for eahc range
-    
-    // for each range of xi < x < xi+1, run S(x)
-    
-    
 }
 
 
-// Description: this function need six inputs, five of them are inputs and  zi is the output.
+// Description: This function need six inputs, five of them are inputs and  zi is the output.
 //              This function does the same thing as interp2(..., 'spline') in MATLAB.
 // Inputs:      x  -> x(:,1) where [x,y] = meshgrid(start:res:end) in MATLAB.
 //              y  -> y(1,:) where [x,y] = meshgrid(start:res:end) in MATLAB.
