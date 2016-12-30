@@ -43,7 +43,7 @@ int main(int argc, const char * argv[]) {
     
     
     for (size_t i = 0; i < zi.size(); i++) {
-        cout << zi[10][i] << " ";
+        cout << zi[3][i] << " ";
     }
     cout << endl;
     
