@@ -29,9 +29,9 @@ int main(int argc, const char * argv[]) {
     y[2] = 3;
     y[3] = 4;
     z[3][0] = 0;
-    z[3][1] = 0;
-    z[3][2] = 2;
-    z[3][3] = 2;
+    z[3][1] = 1;
+    z[3][2] = 9;
+    z[3][3] = 16;
     
     for (size_t i = 0; i < xi.size(); i++) {
         xi[i] = 0.5*i;
