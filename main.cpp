@@ -19,20 +19,22 @@ int main(int argc, const char * argv[]) {
     vector<vector<double>> zi(11, vector<double>(11,0));
     
     // set up x, y, z, xi, yi
-    
     x[0] = 0;
     x[1] = 1;
-    x[2] = 3;
-    x[3] = 4;
+    x[2] = 2;
+    x[3] = 3;
+    
     y[0] = 0;
     y[1] = 1;
-    y[2] = 3;
-    y[3] = 4;
-    z[3][0] = 0;
-    z[3][1] = 1;
-    z[3][2] = 9;
-    z[3][3] = 16;
+    y[2] = 2;
+    y[3] = 3;
     
+    for (size_t i = 0; i < z.size(); i++) {
+        for (size_t j = 0; j < z.size(); j++) {
+            z[i][j] = i*i - 2*i*j + j*j;
+        }
+    }
+
     for (size_t i = 0; i < xi.size(); i++) {
         xi[i] = 0.5*i;
         yi[i] = 0.5*i;
