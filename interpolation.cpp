@@ -25,6 +25,7 @@ using namespace Interpolation;
 //                  0  a2 b2
 // Output:      X -> it is the X vector of the equation MX = Y
 void Interpolation::tdma(vector<double> &M, vector<double> a, vector<double> b, vector<double> c) {
+    cout << "M_init = " << endl;
     cout << b[0] << " " << c[0] << "  0 " << "  0" << endl;
     cout << a[1] << "    " << b[1] << "  " << c[1] << "   0" << endl;
     cout << "0"  << "    " << a[2] << "  " << b[2] << "   " << c[2] << endl;
@@ -73,11 +74,13 @@ void Interpolation::tdma(vector<double> &M, vector<double> a, vector<double> b, 
 //              xi -> xi(:,1) where xi = start:new_res:end in MATLAB.
 //              zi -> it is the return value of interp2(x,z,xi) in MATLAB
 void Interpolation::spline(vector<double> x, vector<double> y, vector<double> xi, vector<double> &yi) {
+    cout << "X = "<< endl;
     for (size_t i=0; i<x.size(); i++) {
         cout << x[i] << " ";
     }
     cout << endl;
     
+    cout << "y = " << endl;
     for (size_t i=0; i<x.size(); i++) {
         cout << y[i] << " ";
     }
@@ -114,14 +117,25 @@ void Interpolation::spline(vector<double> x, vector<double> y, vector<double> xi
         Y[i] = 6 * (d[i] - d[i-1]);
     }
     
-    // convert X to a tridiagonal matrix and the coresponding vector Y
-    b[0] = -h[1] - a[1] * (-h[0]) / c[1];
-    c[0] = (h[0] + h[1]) - b[1] * (-h[0]) / c[1];
-    Y[0] = Y[0] - Y[1] * (-h[0]) / c[1];
-    a[last] = (h[last - 2] + h[last - 1]) - b[last-1] * (-h[last-1]) / a[last-1];
-    b[last] = (-h[last - 2]) - c[last - 1] * (-h[last - 1]) / a[last - 1];
-    Y[last] = Y[last] - Y[last - 1] * (-h[last - 1]) / a[last - 1];
+    cout << "Y = " << endl;
+    for (size_t i=0; i<x.size(); i++) {
+        cout << Y[i] << " ";
+    }
+    cout << endl;
     
+    cout << h[0] << endl;
+    cout << (-h[last - 2]) << endl;
+    // convert X to a tridiagonal matrix and the coresponding vector Y
+    if (-h[0]) {
+        b[0] = -h[1] - a[1] * (-h[0]) / c[1];
+        c[0] = (h[0] + h[1]) - b[1] * (-h[0]) / c[1];
+        Y[0] = Y[0] - Y[1] * (-h[0]) / c[1];
+    }
+    if (-h[last - 2]) {
+        a[last] = (h[last - 2] + h[last - 1]) - b[last-1] * (-h[last-1]) / a[last-1];
+        b[last] = (-h[last - 2]) - c[last - 1] * (-h[last - 1]) / a[last - 1];
+        Y[last] = Y[last] - Y[last - 1] * (-h[last - 1]) / a[last - 1];
+    }
     // call tdma to solve M where XM = Y => M = Y because of tdma function
     tdma(Y, a, b, c);
     cout << "M = " << endl;
@@ -162,7 +176,7 @@ void Interpolation::spline(vector<double> x, vector<double> y, vector<double> xi
 //              zi -> it is the return value of interp2(..., 'spline') in MATLAB
 void Interpolation::spline2(vector<double> x, vector<double> y, vector<vector<double>> z, vector<double> xi, vector<double> yi, vector<vector<double>> &zi) {
     // interpolate each row
-    for (size_t i=3; i<x.size(); i++) {
+    for (size_t i=0; i<x.size()-3; i++) {
         spline(x,z[i],xi,zi[i]);
     }
     
