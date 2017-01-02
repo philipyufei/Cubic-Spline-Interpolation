@@ -21,13 +21,13 @@ int main(int argc, const char * argv[]) {
     // set up x, y, z, xi, yi
     x[0] = 0;
     x[1] = 1;
-    x[2] = 2;
-    x[3] = 3;
+    x[2] = 3;
+    x[3] = 4;
     
     y[0] = 0;
     y[1] = 1;
-    y[2] = 2;
-    y[3] = 3;
+    y[2] = 3;
+    y[3] = 4;
     
     for (size_t i = 0; i < z.size(); i++) {
         for (size_t j = 0; j < z.size(); j++) {
@@ -45,7 +45,7 @@ int main(int argc, const char * argv[]) {
     
     
     for (size_t i = 0; i < zi.size(); i++) {
-        cout << zi[3][i] << " ";
+        cout << zi[4][i] << " ";
     }
     cout << endl;
     
