@@ -130,6 +130,8 @@ void Interpolation::spline(vector<double> x, vector<double> y, vector<double> xi
     Y[last] = Y[last] - Y[last - 1] * (-h[last - 1]) / a[last - 1];
     
     // call tdma to solve M where XM = Y => M = Y because of tdma function
+    // tdma need to change a little bit, you need two more value m_0_2 and m_n-1_n-3
+    // tdma is to solve a quadrudiagonal matrix
     tdma(Y, a, b, c);
     //cout << "M = " << endl;
     //for (size_t i = 0; i < b.size(); i++) {
