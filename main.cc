@@ -1,13 +1,12 @@
 //
-//  main.cpp
+//  main.cc
 //  Cubic-Spline-Interpolation
 //
 //  Created by Yufei Zhang on 2016-12-30.
 //  Copyright © 2016 Yufei Zhang. All rights reserved.
 //
-// http://www.cnblogs.com/xpvincent/archive/2013/01/26/2878092.html
 
-#include "interpolation.hpp"
+#include "interpolation.h"
 using namespace interpolation;
 
 int main(int argc, const char * argv[]) {

@@ -1,5 +1,5 @@
 //
-//  interpolation.cpp
+//  interpolation.cc
 //  Cubic-Spline-Interpolation
 //
 //  Created by Yufei Zhang on 2016-12-30.
@@ -7,7 +7,7 @@
 //
 
 
-#include "interpolation.hpp"
+#include "interpolation.h"
 #include <math.h>
 
 

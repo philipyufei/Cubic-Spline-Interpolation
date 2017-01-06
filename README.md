@@ -1,5 +1,4 @@
 # Cubic-Spline-Interpolation
-## Introduction
 This is a function to show how interpolation works and how to convert a MATLAB inperp2('spline') to C++.
 
 
@@ -11,10 +10,12 @@ This is a function to show how interpolation works and how to convert a MATLAB i
  
  
 ## Compiling and Running
-1. To compile, you simply need to type 'make' on you terminal.
-   However, if you have already make once, you need to typle 'make clean' before your second compiling.
+### 	To compile, you simply need to type 'make' on you terminal.
 
-2. To run it, you need to type 'cubic-spline-interpolation' on your terminal.
+###		However, if you have already make once, you need to typle 'make clean' before your second compiling.
+
+
+###		To run it, you need to type 'cubic-spline-interpolation' on your terminal.
  
 
 ## References
@@ -22,6 +23,6 @@ This is a function to show how interpolation works and how to convert a MATLAB i
 [A Note On Cubic Splines][note1]
 [note1]:http://www.cs.tau.ac.il/~turkel/notes/numeng/spline_note.pdf
 
-2. http://blog.csdn.net/skykingf/article/details/45536231
+1. http://blog.csdn.net/skykingf/article/details/45536231
 
-3. http://blog.csdn.net/kaitiren/article/details/38513715
+2. http://blog.csdn.net/kaitiren/article/details/38513715

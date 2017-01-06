@@ -1,13 +1,13 @@
 //
-//  interpolation.hpp
+//  interpolation.h
 //  Cubic-Spline-Interpolation
 //
 //  Created by Yufei Zhang on 2016-12-30.
 //  Copyright © 2016 Yufei Zhang. All rights reserved.
 //
 
-#ifndef interpolation_hpp
-#define interpolation_hpp
+#ifndef interpolation_h
+#define interpolation_h
 
 
 #include <iostream>
