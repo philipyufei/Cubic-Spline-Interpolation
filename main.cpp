@@ -8,48 +8,53 @@
 // http://www.cnblogs.com/xpvincent/archive/2013/01/26/2878092.html
 
 #include "interpolation.hpp"
-using namespace Interpolation;
+using namespace interpolation;
 
 int main(int argc, const char * argv[]) {
-    // initialize enough space for all inputs
-    vector<double> x(4,0);
-    vector<double> y(4,0);
-    vector<vector<double>> z(4, vector<double>(4,0));
-    vector<double> xi(11,0);
-    vector<double> yi(11,0);
-    vector<vector<double>> zi(11, vector<double>(11,0));
-    
-    // set up x, y, z, xi, yi
-    x[0] = 0;
-    x[1] = 1;
-    x[2] = 3;
-    x[3] = 4;
-    
-    y[0] = 0;
-    y[1] = 1;
-    y[2] = 3;
-    y[3] = 4;
-    
-    for (size_t i = 0; i < z.size(); i++) {
-        for (size_t j = 0; j < z.size(); j++) {
-            z[i][j] = i*i - 2*i*j + j*j;
-        }
+  // set bounds of input matrix and output matrix
+  double num_start    = 0.00;
+  double num_end      = 3.00;
+  double num_old_res  = 1.00;
+  double num_new_res  = 0.30;
+  double num_old_size = (num_end - num_start) / num_old_res + 1;
+  double num_new_size = (num_end - num_start) / num_new_res + 1;
+  
+  // initialize four vectors and two matrix
+  vector<double> vector_x(num_old_size, 0);
+  vector<double> vector_y(num_old_size, 0);
+  vector<vector<double>> matrix_z(num_old_size,vector<double>(num_old_size,0));
+  vector<double> vector_xi(num_new_size, 0);
+  vector<double> vector_yi(num_new_size, 0);
+  vector<vector<double>> matrix_zi(num_new_size,vector<double>(num_new_size,0));
+  
+  // set [x,y] = meshgrid(start:old_res:end), z = x^2 - 2xy + y^2
+  for (int i = 0; i < num_old_size; ++i) {
+    vector_x[i] = num_start + i*num_old_res;
+    vector_y[i] = num_start + i*num_old_res;
+    for (int j = 0; j < num_old_size; ++j) {
+      matrix_z[i][j] = i*i - 2*i*j + j*j + 2*i -3 * j;
     }
-
-    for (size_t i = 0; i < xi.size(); i++) {
-        xi[i] = 0.5*i;
-        yi[i] = 0.5*i;
-    }
-
-    // call spline2 to do interpolation for 2D
-    spline2(x,y,z,xi,yi,zi);
-    
-    
-    for (size_t i = 0; i < zi.size(); i++) {
-        cout << zi[4][i] << " ";
+  }
+  
+  // set [xi, yi] = meshgrid(start:new_res:end)
+  for (int i = 0; i < num_new_size; ++i) {
+    vector_xi[i] = num_start + i*num_new_res;
+    vector_yi[i] = num_start + i*num_new_res;
+  }
+  
+  // do linear interpolation to update zi
+  //linear(vector_x, vector_y, matrix_z, vector_xi, vector_yi, matrix_zi);
+  
+  // do cubic spline interpolation to update zi
+  Spline2(vector_x, vector_y, matrix_z, vector_xi, vector_yi, matrix_zi);
+  
+  // print the output of zi
+  for (int i = 0; i < num_new_size; ++i) {
+    for (int j = 0; j < num_new_size; ++j) {
+      cout << matrix_zi[i][j] << " ";
     }
     cout << endl;
-    
-    
-    return 0;
+  }
+  
+  return 0;
 }
