@@ -1,0 +1,276 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0CB481BF1E28A7010075C995 /* interpolation.cc in Sources */ = {isa = PBXBuildFile; fileRef = 0CB481BD1E28A7010075C995 /* interpolation.cc */; };
+		0CB481C01E28A7010075C995 /* main.cc in Sources */ = {isa = PBXBuildFile; fileRef = 0CB481BE1E28A7010075C995 /* main.cc */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0CAE288C1E1574A900A0DA99 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0CAE288E1E1574AD00A0DA99 /* Cubic-Spline-Interpolation */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Cubic-Spline-Interpolation"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CB481BC1E28A6F50075C995 /* interpolation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interpolation.h; sourceTree = SOURCE_ROOT; };
+		0CB481BD1E28A7010075C995 /* interpolation.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = interpolation.cc; sourceTree = SOURCE_ROOT; };
+		0CB481BE1E28A7010075C995 /* main.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cc; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0CAE288B1E1574A900A0DA99 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0CAE28851E1574A900A0DA99 = {
+			isa = PBXGroup;
+			children = (
+				0CAE28901E1574AD00A0DA99 /* Cubic-Spline-Interpolation */,
+				0CAE288F1E1574AD00A0DA99 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0CAE288F1E1574AD00A0DA99 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0CAE288E1E1574AD00A0DA99 /* Cubic-Spline-Interpolation */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0CAE28901E1574AD00A0DA99 /* Cubic-Spline-Interpolation */ = {
+			isa = PBXGroup;
+			children = (
+				0CAE28991E1575F300A0DA99 /* header */,
+				0CAE289A1E15762900A0DA99 /* source */,
+			);
+			path = "Cubic-Spline-Interpolation";
+			sourceTree = "<group>";
+		};
+		0CAE28991E1575F300A0DA99 /* header */ = {
+			isa = PBXGroup;
+			children = (
+				0CB481BC1E28A6F50075C995 /* interpolation.h */,
+			);
+			name = header;
+			sourceTree = "<group>";
+		};
+		0CAE289A1E15762900A0DA99 /* source */ = {
+			isa = PBXGroup;
+			children = (
+				0CB481BD1E28A7010075C995 /* interpolation.cc */,
+				0CB481BE1E28A7010075C995 /* main.cc */,
+			);
+			name = source;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0CAE288D1E1574A900A0DA99 /* Cubic-Spline-Interpolation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0CAE28951E1574AD00A0DA99 /* Build configuration list for PBXNativeTarget "Cubic-Spline-Interpolation" */;
+			buildPhases = (
+				0CAE288A1E1574A900A0DA99 /* Sources */,
+				0CAE288B1E1574A900A0DA99 /* Frameworks */,
+				0CAE288C1E1574A900A0DA99 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Cubic-Spline-Interpolation";
+			productName = "Cubic-Spline-Interpolation";
+			productReference = 0CAE288E1E1574AD00A0DA99 /* Cubic-Spline-Interpolation */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0CAE28861E1574A900A0DA99 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = "Yufei Zhang";
+				TargetAttributes = {
+					0CAE288D1E1574A900A0DA99 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 0CAE28891E1574A900A0DA99 /* Build configuration list for PBXProject "Cubic-Spline-Interpolation" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0CAE28851E1574A900A0DA99;
+			productRefGroup = 0CAE288F1E1574AD00A0DA99 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0CAE288D1E1574A900A0DA99 /* Cubic-Spline-Interpolation */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0CAE288A1E1574A900A0DA99 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0CB481C01E28A7010075C995 /* main.cc in Sources */,
+				0CB481BF1E28A7010075C995 /* interpolation.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0CAE28931E1574AD00A0DA99 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		0CAE28941E1574AD00A0DA99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		0CAE28961E1574AD00A0DA99 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0CAE28971E1574AD00A0DA99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0CAE28891E1574A900A0DA99 /* Build configuration list for PBXProject "Cubic-Spline-Interpolation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0CAE28931E1574AD00A0DA99 /* Debug */,
+				0CAE28941E1574AD00A0DA99 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0CAE28951E1574AD00A0DA99 /* Build configuration list for PBXNativeTarget "Cubic-Spline-Interpolation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0CAE28961E1574AD00A0DA99 /* Debug */,
+				0CAE28971E1574AD00A0DA99 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0CAE28861E1574A900A0DA99 /* Project object */;
+}
