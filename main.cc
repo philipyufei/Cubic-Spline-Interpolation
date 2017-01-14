@@ -59,7 +59,7 @@ int main(int argc, const char * argv[]) {
     cout << endl;
   }
 
-  std::cout << "Time spend: " << (double)(stop - start) << std::endl;
+  std::cout << "Time spend: " << (double)(stop - start)/1000.00 << std::endl;
   
   return 0;
 }
