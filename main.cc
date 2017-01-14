@@ -10,6 +10,7 @@
 using namespace interpolation;
 
 int main(int argc, const char * argv[]) {
+  clock_t start, stop;
   // set bounds of input matrix and output matrix
   double num_start    = 0.00;
   double num_end      = 3.00;
@@ -45,8 +46,11 @@ int main(int argc, const char * argv[]) {
   //linear(vector_x, vector_y, matrix_z, vector_xi, vector_yi, matrix_zi);
   
   // do cubic spline interpolation to update zi
-  Spline2(vector_x, vector_y, matrix_z, vector_xi, vector_yi, matrix_zi);
   
+  start = clock();
+  Spline2(vector_x, vector_y, matrix_z, vector_xi, vector_yi, matrix_zi);
+  stop = clock();
+
   // print the output of zi
   for (int i = 0; i < num_new_size; ++i) {
     for (int j = 0; j < num_new_size; ++j) {
@@ -54,6 +58,8 @@ int main(int argc, const char * argv[]) {
     }
     cout << endl;
   }
+
+  std::cout << "Time spend: " << (double)(stop - start) << std::endl;
   
   return 0;
 }
